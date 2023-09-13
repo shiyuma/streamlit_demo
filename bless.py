@@ -43,7 +43,7 @@ wishes = [
   ]
 
 with col1:
-  image = Image.open('pictures/buddha.jpg')
+  image = Image.open('buddha.jpg')
   st.image(image, caption='bless')
 
 result=[]
