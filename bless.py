@@ -5,7 +5,7 @@ from PIL import Image
 from langchain import OpenAI
 from langchain.prompts import PromptTemplate
 
-openai_api_key='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'
+openai_api_key='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'
 
 def generate_response(text):
     llm = OpenAI(temperature=0.2, openai_api_key=openai_api_key)
@@ -15,7 +15,11 @@ def generate_response(text):
 你的回答要在0~50字左右，并尽可能引用佛教的经典语录，\
 最好在最后备注回答来自于哪某一位佛祖或菩萨。\
 比如：求财是来自于财神爷、求子来自于观音等等，需要结合愿望内容。回答：")
-    return llm.predict(prompt.format(topic=text))
+    try:
+      output=llm.predict(prompt.format(topic=text))
+    except:
+      output='apikey已失效,请联系开发者'
+    return output
 
 col1, col2 = st.columns(2)
 
